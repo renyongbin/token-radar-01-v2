@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="pulse" aria-hidden="true"></div>
+    <div>
+      <h1>TOKEN RADAR</h1>
+      <p class="tag">Pre-token protocols, ranked by what their token would be worth.</p>
+    </div>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<main>
+  <section class="controls" aria-label="Filter and sort">
+    <label>Search <input id="q" type="search" placeholder="name or slug" autocomplete="off"></label>
+    <label>Category <select id="cat"><option value="">All categories</option></select></label>
+    <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+    <label class="check"><input id="watchOnly" type="checkbox"> Watchlist only</label>
+    <label>Sort <select id="sort">
+      <option value="rank">Rank (implied value)</option>
+      <option value="tvl">TVL, high to low</option>
+      <option value="growth">7-day growth, high to low</option>
+      <option value="age">Age, oldest first</option>
+      <option value="name">Name, A to Z</option>
+    </select></label>
+    <span class="count" id="count"></span>
+  </section>
+
+  <section class="board-wrap">
+    <table class="board" id="board">
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Protocol</th>
+          <th>Category</th>
+          <th>Chains</th>
+          <th class="num">TVL</th>
+          <th class="num">7d</th>
+          <th class="num">Age</th>
+          <th class="num">Implied value</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="hint">Click a row for the detail view: how its implied value is derived, and how to farm it.</p>
+  </section>
+
+  <section class="detail" id="detail" aria-live="polite">
+    <p class="empty">Select a protocol above to see its detail view.</p>
+  </section>
+
+  <section class="method" id="method">
+    <h2>How the implied value is computed</h2>
+    <p>Implied value = TVL &times; category multiple &times; growth factor &times; age factor &times; chain factor.</p>
+    <ul>
+      <li><strong>Category multiple:</strong> the median market-cap / TVL of the protocols in the same DefiLlama category whose token already trades. A category with fewer than three traded comps uses the global median instead. Multiples are clamped to 0.03&ndash;2.00.</li>
+      <li><strong>Growth factor:</strong> 1 + half the 7-day TVL change, clamped to 0.75&ndash;1.50. No reported change counts as flat.</li>
+      <li><strong>Age factor:</strong> 1 + 0.12 per year the protocol has run with no token, capped at four years. A protocol DefiLlama does not date counts as one year old.</li>
+      <li><strong>Chain factor:</strong> 1 + 0.02 per chain the protocol runs on, capped at eight chains.</li>
+    </ul>
+    <p>The board ranks the 180 pre-token protocols with the highest implied value, and always includes all 40 of the snapshot's watchlist. Protocols whose token already trades are not ranked here: their tokens have a market price already, so there is nothing to imply. Neither are wrapped, staked or bridged products of a token that already trades — a wrapped bitcoin, a staked-ETH product or a bridge is not a protocol still waiting on a launch of its own — nor versioned builds of a protocol: <span id="excluded"></span> of the snapshot's pre-token protocols are set aside on that rule. The table below shows the traded protocols behind the multiples.</p>
+    <div id="multiples"></div>
+    <h3>Traded comps (largest by market cap)</h3>
+    <div id="traded"></div>
+    <p class="fine">Data: DefiLlama protocol snapshot, fetched 14 November 2026. &ldquo;Records no token&rdquo; means DefiLlama's record carries no token for the protocol; it is not proof the protocol has none. An implied value is this radar's own claim about what a token would be worth if the protocol's record stayed as it is. It is not a prediction that a token will be issued, or when, and it is not investment advice. Farm steps are starting points: check the protocol's own app and docs before moving funds, and never risk more than you can afford to lose.</p>
+  </section>
+</main>
+
+<footer>Token Radar &middot; snapshot 2026-11-14 &middot; runs with no network.</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
