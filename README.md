@@ -1,4 +1,8 @@
-# Token Radar
+# token-radar-01-v2
+
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/renyongbin/token-radar-01-v2/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/renyongbin/token-radar-01-v2/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 
 A token launch radar: it ranks the protocols that record no token by what
 their token would be worth, and shows how to farm each one.
@@ -49,3 +53,7 @@ protocol; it is not proof the protocol has none. An implied value is this
 radar's own claim about what a token would be worth if the protocol's record
 stayed as it is — not a prediction that a token will be issued, or when, and
 not investment advice.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=efr46sz5&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
